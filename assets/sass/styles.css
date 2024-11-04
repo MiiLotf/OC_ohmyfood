@@ -798,6 +798,9 @@ body {
   .restaurant-info {
     width: 400px;
   }
+  .restaurant-button .heart-button {
+    right: -350px !important;
+  }
   .menu-title-menu {
     width: 35%;
   }
