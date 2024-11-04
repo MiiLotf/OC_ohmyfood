@@ -1,0 +1,24 @@
+   $primary-color: #9356DC;
+   $secondary-color: #FF79DA;
+   $third-color: #99E2D0;
+   $font-stack: 'Helvetica Neue', sans-serif;
+   $background-color: #f4f4f4;
+   $grey-light: #e0e0e0;
+   $grey-lighter: #f5f5f5;
+   $grey-dark: #ccc;
+   $black: #000;
+   $white: #fff;
+
+   // Importation des polices
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Roboto:wght@100;200;300;400;700&display=swap');
+
+// Application des polices
+.footer-title {
+   font-family: 'Shrikhand', cursive; // Pour les titres et le logo
+   font-weight: 400;
+}
+
+body {
+   font-family: 'Roboto', sans-serif; // Pour le texte
+   font-weight: 400;
+}

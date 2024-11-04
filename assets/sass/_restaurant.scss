@@ -1,0 +1,121 @@
+@import '_variables';
+@import '_mixins';
+
+.restaurants {
+    background-color: #f0f0f0;
+    padding: 20px;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .restaurant-button {
+        display: flex;
+        flex-direction: column; // Empile les éléments
+        position: relative;
+        background-color: white;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        height: 200px;
+
+        a {
+            display: flex; // Utilise flexbox pour aligner les éléments
+            flex-direction: column; // Aligne les éléments verticalement
+            text-decoration: none; 
+            color: inherit; // Hérite de la couleur du texte du parent
+            height: 100%; 
+            transition: transform 0.3s; // Transition pour l'effet de survol
+            position: relative;
+
+            &:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Ombre plus visible au survol
+            }
+        }
+
+        .restaurant-image {
+            position: relative; // Position relative pour le badge
+            height: 68%; // Prend 68% de la hauteur du bouton
+
+            img {
+                width: 100%; 
+                height: 100%; 
+                object-fit: cover; // Couvre l'élément tout en maintenant le ratio d'aspect
+                border-radius: 10px 10px 0 0; // Arrondit le haut des images
+            }
+
+            .new-badge {
+                position: absolute; // Position absolue par rapport à l'image
+                top: 10px; 
+                right: 10px; 
+                background-color: $third-color;
+                color: darkgreen; 
+                padding: 5px 10px; 
+                border-radius: 5px; 
+                font-size: 0.9em; 
+                z-index: 1; // Assure que le badge est au-dessus de l'image
+            }
+        }
+
+        .restaurant-info {
+            width: 220px;
+            padding: 10px;
+            display: flex;
+            position: absolute;
+            justify-content: space-between; // Espace entre le texte et le bouton cœur
+            bottom: -5px;
+
+            .info-text {
+                flex: 1;
+                display: flex;
+                flex-direction: column; // Empile le nom et le sous-titre
+                flex-grow: 1; // Permet au texte de prendre l'espace restant
+
+                h3 {
+                    margin: 0;
+                    font-size: 1.2em;
+                }
+
+                p {
+                    margin: 5px 0;
+                    color: gray;
+                }
+            }
+            
+            .heart-button {
+                @include heart-button;
+                position: absolute;
+                bottom: 20px;
+                right: -90px;
+            
+                // Icône cœur vide avec traits noirs (par défaut)
+                .far.fa-heart {
+                    display: inline-block;
+                    font-size: 24px;
+                    color: black; // Couleur noire pour les traits
+                    transition: opacity 0.3s ease;
+                }
+            
+                // Icône cœur rempli en dégradé, cachée par défaut
+                .fas.fa-heart {
+                    display: none; // Masqué initialement
+                    font-size: 24px;
+                    background: linear-gradient(to right, $primary-color, $secondary-color);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent; // Nécessaire pour voir le dégradé
+                }
+            
+                // Afficher le cœur rempli et masquer le cœur vide au survol
+                &:hover .far.fa-heart {
+                    display: none; // Masquer le cœur vide au survol
+                }
+            
+                &:hover .fas.fa-heart {
+                    display: inline-block; // Afficher le cœur rempli en dégradé
+                }
+            }
+        }
+    }
+}

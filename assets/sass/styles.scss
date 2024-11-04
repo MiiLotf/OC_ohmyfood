@@ -1,0 +1,273 @@
+@import '_variables';
+@import '_mixins';
+@import '_header';
+@import '_footer';
+@import '_menus';
+@import '_restaurant';
+@import '_buttons.scss';
+
+// Suppression des marges et du padding sur l'ensemble de la page
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fonctionnement {
+    padding: 20px;
+
+    &-title {
+        margin-bottom: 20px;
+    }
+}
+
+/* Loader & Spinner */
+
+@keyframes fadeOutAndSpin {
+    0% {
+        opacity: 1; /* Opacité initiale du loader */
+        visibility: visible; /* Reste visible */
+        transform: rotate(0deg); /* Rotation initiale du spinner */
+    }
+    50% {
+        opacity: 0.5; /* Semi-transparent */
+        visibility: visible; /* Toujours visible */
+        transform: rotate(180deg); /* Rotation à mi-chemin */
+    }
+    100% {
+        opacity: 0; /* Complètement transparent */
+        visibility: hidden; /* Cache complètement le loader */
+        transform: rotate(360deg); /* Rotation finale du spinner */
+    }
+}
+
+.loader {
+    position: fixed; /* Fixe le loader par rapport à la fenêtre du navigateur */
+    top: 0; /* Commence en haut de l'écran */
+    left: 0; /* Commence à gauche de l'écran */
+    width: 100%; /* Couvre toute la largeur */
+    height: 100%; /* Couvre toute la hauteur */
+    background-color: rgba(147, 86, 220, 0.8); /* Couleur de fond */
+    display: flex; /* Utilise flexbox pour centrer le contenu */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    z-index: 9999; /* Assure que le loader est au-dessus des autres éléments */
+    pointer-events: auto; /* Permet les événements de pointeur sur le loader */
+    animation: fadeOutAndSpin 3s forwards; /* Animation combinée */
+}
+
+.spinner {
+    border: 8px solid #f3f3f3; /* Couleur de fond du spinner */
+    border-top: 8px solid #99E2D0; /* Couleur de la partie supérieure */
+    border-radius: 50%; /* Arrondit le spinner */
+    width: 50px; /* Largeur du spinner */
+    height: 50px; /* Hauteur du spinner */
+}      
+
+// Media Queries
+
+// General Media Query for Tablets
+@media (min-width: 600px) {
+    body {
+        margin: 0; /* Supprime le margin par défaut */
+    }
+
+    .header-menu {
+        padding: 0 60px; // Ajuste le padding
+    }
+
+    .main-menu {
+        background-color: #ffffff; /* Fond blanc pour la section main-menu */
+        position: relative; /* Position relative pour gérer les éléments en arrière-plan */
+        z-index: 1; /* Assurez-vous que cette section est au-dessus des autres */
+    }
+
+    .fonctionnement {
+        padding: 20px;
+    
+        &-title {
+            margin-bottom: 20px;
+            padding-left: 10px; // Espacement à gauche
+        }
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-around; // Espace uniforme entre les boutons
+        flex-wrap: nowrap; // Permet aux boutons de passer à la ligne si nécessaire
+    }
+
+    .restaurants {
+        display: flex; // Utilise flex pour le conteneur des restaurants
+        flex-wrap: wrap; // Permet aux éléments d'aller à la ligne
+        padding: 30px 60px; // Ajuster le padding
+        justify-content: space-between; // Espace égal entre les boutons
+    }
+
+    h2 {
+        font-size: 1.5em; // Augmenter la taille du titre
+        margin-bottom: 20px; // Espacement en bas du titre
+        width: 100%; // S'assurer que le titre prend toute la largeur
+    }
+
+    .restaurant-info-menu {
+        .restaurant-details-menu {
+            display: flex;
+            align-items: center; // Centre verticalement
+            justify-content: center; // Centre horizontalement
+            margin-top: -50px; // Ajustement de la marge
+            background-color: $grey-lighter; // Couleur de fond
+            border-radius: 40px 40px 0 0; // Bordures arrondies
+            padding: 10px; // Padding général
+            z-index: 10; // Assure que c'est au-dessus des autres éléments
+
+            .restaurant-name-menu {
+                font-family: 'Shrikhand', cursive;
+                font-size: 1.75rem;
+                text-align: center; // Centre le texte horizontalement
+                max-width: 300px;
+            }
+
+            .heart-button-menu {
+                display: flex; // Utiliser flex pour centrer
+                justify-content: center; // Centre le contenu horizontalement
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .restaurant-button {
+        display: flex;
+        flex-direction: column; // Affiche le contenu en colonne
+        justify-content: space-between; // Espace entre les boutons
+        width: calc(50% - 20px); // Ajuste la largeur pour avoir deux éléments par ligne
+        margin: 15px 0;
+    }
+
+    .restaurant-button:nth-child(2n) {
+        margin-right: 0; // Enlève le margin à droite pour les boutons pairs
+    }
+
+    /* Marges pour restaurant-details-menu et sections de menu */
+    .restaurant-details-menu {
+        margin: 0 60px; // Marges à gauche et à droite
+    }
+
+    .restaurant-info-menu {
+        .restaurant-image-menu {
+            position: relative;
+            overflow: hidden;
+    
+            img {
+                width: 100%;
+                height: 300px; // Hauteur fixe pour les images
+                object-fit: cover;
+            }
+        }
+    }
+
+    .menu-title-menu {
+        font-size: 1.25rem;
+        display: flex;
+        position: relative;
+        padding-bottom: 5px;
+        font-weight: 300;
+        margin-bottom: 10px; // Ajoute un espacement en bas pour séparer du contenu suivant
+        width: 65%; // Prend toute la largeur du conteneur
+
+        &::after {
+            content: '';
+            display: block;
+            width: 15%;
+            height: 3px;
+            background-color: $third-color;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    }
+
+    .menu-section-menu.entrees,
+    .menu-section-menu.plats,
+    .menu-section-menu.desserts,
+    .order-button-menu {
+        background-color: $grey-lighter;
+        margin: 0 60px; // Marges à gauche et à droite
+        display: flex; // Active le modèle Flexbox
+        flex-direction: column; // Aligne les éléments en colonne
+        align-items: center; // Centre horizontalement
+        justify-content: center; // Centre verticalement
+    }
+
+    .menu-item-menu {
+        display: flex; // Utilise Flexbox pour chaque élément de menu
+        justify-content: space-between; // Espace entre les informations et le prix
+        align-items: center; // Centre verticalement les éléments
+        width: 100%; // Prend toute la largeur disponible
+        max-width: 600px; // Limite la largeur pour chaque élément de menu
+        padding: 10px; // Espacement interne pour chaque élément
+        margin: 10px 0; // Espacement vertical entre les éléments
+    }
+
+    .menu-section-menu .menu-item-menu .checkmark {
+        right: -300px; // Positionnement de la coche
+    }   
+
+    .menu-item-menu {
+        max-width: 400px; // Limite la largeur de l'élément du menu
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: row-reverse; // Inverse l'ordre des éléments
+        align-items: center; // Centre verticalement
+        padding: 20px; // Padding général
+
+        .footer-links {
+            display: flex; // Affiche les liens en ligne
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-left: 30px; // Espacement à gauche de la liste
+            gap: 20px; // Espace entre les éléments de la liste
+        }
+
+        .footer-title {
+            font-size: 22px; // Ajuster la taille du titre
+            margin: 0; // Enlève le margin du titre
+        }
+
+        .footer-logo {
+            padding-left: 40px; // Ajuste le padding gauche à 40px
+            padding-bottom: 0; // Enlève le padding bas
+            flex-shrink: 0; // Empêche le logo de se réduire
+        }
+    }
+}
+
+// Styles spécifiques pour les écrans de bureau
+@media (min-width: 1025px) {
+    .fonctionnement {
+        padding: 20px;
+    
+        &-title {
+            margin-bottom: 20px;
+            padding-left: 40px; // Espacement à gauche pour les écrans plus larges
+        }
+    }
+
+    .restaurant-button {
+        width: calc(50% - 20px); // Ajustement de la largeur pour les bureaux
+    }
+
+    .restaurant-info {
+        width: 400px;
+    }
+    
+    .menu-title-menu {
+        width: 35%; // Ajustement de la largeur pour les bureaux
+    }
+
+    .menu-section-menu .menu-item-menu .checkmark {
+        right: -600px; // Positionnement de la coche pour les bureaux
+    }
+}

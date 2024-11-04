@@ -1,0 +1,71 @@
+@import 'variables';
+@import 'mixins';
+
+header {
+    text-align: center;
+
+    .logo {
+        padding: 1rem 0;
+        img {
+            max-width: 200px; // Limite la largeur de l'image
+        }
+    }
+
+    .location {
+        background-color: $grey-light; 
+        padding: 1rem 0;
+        border-top: 3px solid $grey-dark; 
+        border-bottom: 3px solid $grey-dark; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Ombre pour ajouter du relief
+        display: flex;
+        justify-content: center; // Centre le contenu horizontalement
+        align-items: center; // Centre le contenu verticalement
+        position: relative; // Nécessaire pour positionner l'icône correctement
+
+        i {
+            margin-right: 0.5rem; 
+            margin-left: 100px; // Espacement à gauche de l'icône
+            color: $black;
+        }
+
+        .location-input {
+            padding: 0.5rem; 
+            border: none; 
+            border-radius: 5px; 
+            width: 200px; 
+            color: $black; 
+            background-color: transparent; 
+            outline: none; // Supprime la bordure de focus par défaut
+        }
+    }
+
+    .hero {
+        background-color: $grey-lighter;
+        padding: 2rem 1rem;
+
+        h1 {
+            color: $black;
+            margin-bottom: 1rem;
+            padding: 0 20px;
+            font-size: 26px; // Taille du titre
+        }
+
+        p {
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            @include button-gradient; // Applique un dégradé au bouton
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem; 
+            color: $white;
+            cursor: pointer; 
+            transition: opacity 0.3s ease; // Transition douce pour l'effet de survol
+
+            &:hover {
+                opacity: 0.9; // Diminue légèrement l'opacité au survol
+            }
+        }
+    }
+}
