@@ -215,6 +215,8 @@
             align-items: center;
             justify-content: center;
             transition: right 0.3s ease;
+            opacity: 0; // Rend la coche invisible
+            visibility: hidden; // Cache la coche
 
             &::before {
                 content: '';
@@ -250,6 +252,8 @@
 
             .checkmark {
                 right: -5px;
+                opacity: 1;
+                visibility: visible;
             }
         }
     }
