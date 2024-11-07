@@ -758,6 +758,9 @@ body {
     padding: 10px;
     margin: 10px 0;
   }
+  .menu-section-menu .menu-item-menu .checkmark {
+    right: -300px;
+  }
   .menu-item-menu {
     max-width: 400px;
   }
@@ -804,5 +807,8 @@ body {
   }
   .menu-title-menu {
     width: 35%;
+  }
+  .menu-section-menu .menu-item-menu .checkmark {
+    right: -600px;
   }
 }/*# sourceMappingURL=styles.css.map */

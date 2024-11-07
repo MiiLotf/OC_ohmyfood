@@ -208,6 +208,10 @@
         margin: 10px 0; // Espacement vertical entre les éléments
     }
 
+    .menu-section-menu .menu-item-menu .checkmark {
+        right: -300px; // Positionnement de la coche
+    }   
+
     .menu-item-menu {
         max-width: 400px; // Limite la largeur de l'élément du menu
     }
@@ -265,5 +269,9 @@
     
     .menu-title-menu {
         width: 35%; // Ajustement de la largeur pour les bureaux
+    }
+
+    .menu-section-menu .menu-item-menu .checkmark {
+        right: -600px; // Positionnement de la coche pour les bureaux
     }
 }
